@@ -413,7 +413,7 @@ const Search = ({ addToCart, buyNow, isSignedIn }) => {
                 <p className="result-description">{artwork.description}</p>
                 <div className="result-price">
                   {typeof artwork.price === 'number'
-                    ? `$${artwork.price.toLocaleString()}`
+                    ? `₹${artwork.price.toLocaleString()}`
                     : artwork.price}
                 </div>
               </div>
