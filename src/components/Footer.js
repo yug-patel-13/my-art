@@ -10,10 +10,10 @@ const Footer = () => {
           <h3>Art Gallery</h3>
           <p>Discover and collect beautiful artworks from talented artists around the world. Your premier destination for original paintings and sketches.</p>
           <div className="social-links">
-            <a href="https://facebook.com" className="social-link" target="_blank" rel="noopener noreferrer">Facebook</a>
-            <a href="https://instagram.com" className="social-link" target="_blank" rel="noopener noreferrer">Instagram</a>
-            <a href="https://twitter.com" className="social-link" target="_blank" rel="noopener noreferrer">Twitter</a>
-            <a href="https://pinterest.com" className="social-link" target="_blank" rel="noopener noreferrer">Pinterest</a>
+            <a href="#" className="social-link">Facebook</a>
+            <a href="#" className="social-link">Instagram</a>
+            <a href="#" className="social-link">Twitter</a>
+            <a href="#" className="social-link">Pinterest</a>
           </div>
         </div>
 
@@ -32,18 +32,18 @@ const Footer = () => {
           <ul className="footer-links">
             <li><Link to="/signin">Sign In</Link></li>
             <li><Link to="/signup">Create Account</Link></li>
-            <li><a href="/orders" className="footer-link">My Orders</a></li>
-            <li><a href="/wishlist" className="footer-link">Wishlist</a></li>
+            <li><a href="#">My Orders</a></li>
+            <li><a href="#">Wishlist</a></li>
           </ul>
         </div>
 
         <div className="footer-section">
           <h4>Support</h4>
           <ul className="footer-links">
-            <li><a href="/help" className="footer-link">Help Center</a></li>
-            <li><a href="/contact" className="footer-link">Contact Us</a></li>
-            <li><a href="/shipping" className="footer-link">Shipping Info</a></li>
-            <li><a href="/returns" className="footer-link">Returns</a></li>
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Shipping Info</a></li>
+            <li><a href="#">Returns</a></li>
           </ul>
         </div>
 
@@ -62,9 +62,9 @@ const Footer = () => {
         <div className="footer-bottom-content">
           <p>&copy; 2025 Art Gallery. All rights reserved.</p>
           <div className="footer-bottom-links">
-            <a href="/privacy" className="footer-link">Privacy Policy</a>
-            <a href="/terms" className="footer-link">Terms of Service</a>
-            <a href="/cookies" className="footer-link">Cookie Policy</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Cookie Policy</a>
           </div>
         </div>
       </div>

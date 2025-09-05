@@ -57,7 +57,6 @@ function App() {
           'Authorization': `Bearer ${token}`
         }
       });
-      console.log('🔍 Token validation response:', response.status);
       return response.ok;
     } catch (error) {
       console.error('Token validation error:', error);
@@ -91,59 +90,36 @@ function App() {
   };
 
   const buyNow = (item) => {
-    console.log('🛒 buyNow called with item:', item);
-    console.log('🔐 Current isSignedIn state:', isSignedIn);
-    console.log('👤 Current user:', user);
-    
-    // Go directly to checkout page (like Flipkart)
-    // User can sign in during checkout if needed
-    const state = { cart: [], isBuyNow: true, singleItem: item };
-    
-    // Store data in localStorage
-    try {
-      localStorage.setItem('checkoutData', JSON.stringify(state));
-      console.log('📦 Checkout data stored for Buy Now:', state);
-    } catch (error) {
-      console.error('Error storing checkout data:', error);
-    }
-    
-    // Navigate directly to checkout
-    const url = `/checkout?state=${encodeURIComponent(JSON.stringify(state))}`;
-    console.log('🚀 Navigating directly to checkout URL:', url);
-    window.location.href = url;
+    // Navigate to checkout with the single item
+    // navigateToCheckout will handle authentication check
+    navigateToCheckout([], true, item);
   };
 
   const navigateToCheckout = (cartItems, isBuyNow = false, singleItem = null) => {
-    console.log('🛒 navigateToCheckout called with:', { cartItems, isBuyNow, singleItem, isSignedIn });
-    
     // Check if user is signed in
     if (!isSignedIn) {
-      console.log('❌ User not signed in, storing checkout intent...');
       // Store checkout intent and data
       const state = { cart: cartItems, isBuyNow, singleItem };
       try {
         localStorage.setItem('checkoutData', JSON.stringify(state));
         localStorage.setItem('checkoutIntent', 'true');
-        console.log('✅ Checkout intent stored, redirecting to signin');
-        console.log('📦 Stored checkout data:', state);
+        console.log('Checkout intent stored, redirecting to signin');
       } catch (error) {
         console.error('Error storing checkout intent:', error);
       }
       
       // Redirect to signin page
-      console.log('🔄 Redirecting to signin page...');
       window.location.href = '/signin';
       return;
     }
     
     // User is signed in, proceed to checkout
-    console.log('✅ User is signed in, proceeding to checkout...');
     const state = { cart: cartItems, isBuyNow, singleItem };
     
     // Store data in localStorage as backup
     try {
       localStorage.setItem('checkoutData', JSON.stringify(state));
-      console.log('📦 Checkout data stored in localStorage:', state);
+      console.log('Checkout data stored in localStorage:', state);
     } catch (error) {
       console.error('Error storing checkout data:', error);
     }
@@ -158,7 +134,6 @@ function App() {
   };
 
   const handleSignIn = (userData) => {
-    console.log('🔐 handleSignIn called with:', userData);
     setIsSignedIn(true);
     setUser(userData);
     
@@ -166,29 +141,23 @@ function App() {
     try {
       localStorage.setItem('user', JSON.stringify(userData));
       localStorage.setItem('isSignedIn', 'true');
-      console.log('✅ User authentication saved to localStorage');
+      console.log('User authentication saved to localStorage');
     } catch (error) {
       console.error('Error saving user authentication:', error);
     }
     
     // Check if user was trying to checkout before signing in
     const checkoutIntent = localStorage.getItem('checkoutIntent');
-    console.log('🔍 Checking checkout intent:', checkoutIntent);
-    
     if (checkoutIntent) {
-      console.log('🎯 User has checkout intent, redirecting to checkout...');
       // Clear the intent
       localStorage.removeItem('checkoutIntent');
       
       // Redirect to checkout with the stored data
       const checkoutData = localStorage.getItem('checkoutData');
-      console.log('📦 Checkout data:', checkoutData);
-      
       if (checkoutData) {
         try {
           const state = JSON.parse(checkoutData);
           const url = `/checkout?state=${encodeURIComponent(JSON.stringify(state))}`;
-          console.log('🚀 Redirecting to checkout URL:', url);
           window.location.href = url;
           return;
         } catch (error) {
