@@ -5,7 +5,6 @@ import './Navbar.css';
 const Navbar = ({ isSignedIn, user, onSignOut, cartCount }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [showSketchForm, setShowSketchForm] = useState(false);
   const navigate = useNavigate();
 
   const handleSearch = (e) => {

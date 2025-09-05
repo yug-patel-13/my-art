@@ -317,7 +317,7 @@ const Search = ({ addToCart, buyNow, isSignedIn }) => {
     
     setSearchResults(filtered);
     setFilteredResults(filtered);
-  }, [query]);
+  }, [query, paintings, sketches]);
 
   useEffect(() => {
     // Filter by category
