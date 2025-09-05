@@ -103,7 +103,7 @@ const Home = () => {
       }
 
       // Send to backend
-      const response = await fetch('https://my-art-backend.onrender.com/api/custom-art/sketch', {
+      const response = await fetch('http://localhost:5000/api/custom-art/sketch', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -144,7 +144,7 @@ const Home = () => {
       console.log('🎨 Submitting custom painting request...');
       
       // Send to backend
-      const response = await fetch('https://my-art-backend.onrender.com/api/custom-art/painting', {
+      const response = await fetch('http://localhost:5000/api/custom-art/painting', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -209,11 +209,11 @@ const Home = () => {
             <Link to="/sketches" className="btn btn-secondary">View Sketches</Link>
           </div>
           <div className="custom-art-buttons">
-            <button
+            <button 
               className="btn btn-custom-sketch"
               onClick={() => setShowSketchForm(true)}
             >
-              Make Your Own Sketch
+              ✏️ Make Your Own Sketch
             </button>
             <button 
               className="btn btn-custom-painting"
