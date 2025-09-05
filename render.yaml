@@ -1,1 +1,65 @@
- 
+services:
+  # Frontend Static Site
+  - type: web
+    name: art-gallery-frontend
+    env: static
+    plan: free
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./build
+    rootDir: ./
+    envVars:
+      - key: REACT_APP_API_URL
+        value: https://my-art-backend.onrender.com
+
+  # Backend API Service
+  - type: web
+    name: art-gallery-backend
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    rootDir: ./backend
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: DB_HOST
+        fromDatabase:
+          name: art-gallery-db
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: art-gallery-db
+          property: port
+      - key: DB_NAME
+        fromDatabase:
+          name: art-gallery-db
+          property: database
+      - key: DB_USER
+        fromDatabase:
+          name: art-gallery-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: art-gallery-db
+          property: password
+      - key: JWT_SECRET
+        generateValue: true
+      - key: EMAIL_USER
+        value: yug.patel.sings01@gmail.com
+      - key: EMAIL_PASS
+        value: xrxnqefrvnvmzocp
+      - key: ADMIN_EMAIL
+        value: yug.patel.sings01@gmail.com
+      - key: CORS_ORIGIN
+        value: https://my-art.onrender.com
+      - key: FRONTEND_URL
+        value: https://my-art.onrender.com
+
+databases:
+  # PostgreSQL Database
+  - name: art-gallery-db
+    plan: free
+    databaseName: art_gallery
+    user: postgres

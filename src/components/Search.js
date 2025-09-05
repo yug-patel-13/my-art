@@ -370,18 +370,8 @@ const Search = ({ addToCart, buyNow, isSignedIn }) => {
           >
             All ({searchResults.length})
           </button>
-          <button
-            className={`filter-btn ${selectedCategory === 'painting' ? 'active' : ''}`}
-            onClick={() => setSelectedCategory('painting')}
-          >
-            Paintings ({searchResults.filter(item => item.type === 'painting').length})
-          </button>
-          <button
-            className={`filter-btn ${selectedCategory === 'sketch' ? 'active' : ''}`}
-            onClick={() => setSelectedCategory('sketch')}
-          >
-            Sketches ({searchResults.filter(item => item.type === 'sketch').length})
-          </button>
+        
+         
         </div>
       </div>
 
@@ -400,14 +390,11 @@ const Search = ({ addToCart, buyNow, isSignedIn }) => {
             <div key={`${artwork.type}-${artwork.id}`} className="search-result-item">
               <div className="result-image">
                 <img src={artwork.image} alt={artwork.title} />
-                <div className="result-overlay">
-                  <span className="view-details">View Details</span>
-                </div>
+             
               </div>
               <div className="result-info">
                 <h3 className="result-title">{artwork.title}</h3>
                 <p className="result-artist">by {artwork.artist}</p>
-                <p className="result-type">{artwork.type === 'painting' ? 'Painting' : 'Sketch'}</p>
                 <p className="result-medium">{artwork.medium}</p>
                 <p className="result-size">{artwork.size}</p>
                 <p className="result-description">{artwork.description}</p>
