@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import './Search.css';
 
@@ -10,7 +10,7 @@ const Search = ({ addToCart, buyNow, isSignedIn }) => {
   const [selectedCategory, setSelectedCategory] = useState('all');
 
   // Sample data - in a real app, this would come from an API
-  const paintings = [
+  const paintings = useMemo(() => [
     {
       id: 1,
       title: "The horse",
@@ -141,9 +141,9 @@ const Search = ({ addToCart, buyNow, isSignedIn }) => {
       image: "/images/paintings/p13.jpeg",
       description: "Feel the sky with your eyes."
     }
-  ];
+  ], []);
 
-  const sketches = [
+  const sketches = useMemo(() => [
     {
       id: 1,
       title: "Deepika Padukone",
@@ -296,9 +296,8 @@ const Search = ({ addToCart, buyNow, isSignedIn }) => {
       size: "16\" x 22\"",
       image: "/images/sketches/s18.jpeg",
       description: "Complex abstract composition with multiple layers and depth. (Example only, not for sale)"
-    },
-   
-  ];
+    }
+  ], []);
 
   useEffect(() => {
     // Combine all artworks
