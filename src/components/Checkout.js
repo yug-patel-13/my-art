@@ -556,10 +556,8 @@ const Checkout = ({ isSignedIn, user }) => {
                         value={billingAddress.country}
                         onChange={(e) => handleAddressChange('country', e.target.value, 'billing')}
                       >
-                        <option value="United States">United States</option>
-                        <option value="Canada">Canada</option>
-                        <option value="United Kingdom">United Kingdom</option>
-                        <option value="Australia">Australia</option>
+                        <option value="India">India</option>
+                      
                       </select>
                     </div>
                   </div>

@@ -76,8 +76,11 @@ JWT_SECRET=your-super-secret-jwt-key-here
 EMAIL_USER=your-email@gmail.com
 EMAIL_PASS=your-app-password
 ADMIN_EMAIL=your-email@gmail.com
-CORS_ORIGIN=https://your-app-name.railway.app
+CORS_ORIGIN=https://your-frontend.railway.app
+FRONTEND_URL=https://your-frontend.railway.app
 ```
+
+**Important:** Replace `your-frontend.railway.app` with your actual Railway frontend URL!
 
 ### **Step 5: Deploy Frontend**
 

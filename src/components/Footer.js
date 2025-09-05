@@ -50,9 +50,9 @@ const Footer = () => {
         <div className="footer-section">
           <h4>Contact Info</h4>
           <div className="contact-info">
-            <p>📍 123 Art Street, Gallery District</p>
-            <p>📧 info@artgallery.com</p>
-            <p>📞 +1 (555) 123-4567</p>
+        
+            <p>📧 yug.patel.sings01@gmail.com</p>
+            <p>📞 +91 9879492936</p>
             <p>🕒 Mon-Fri: 9AM-6PM</p>
           </div>
         </div>
@@ -60,7 +60,7 @@ const Footer = () => {
 
       <div className="footer-bottom">
         <div className="footer-bottom-content">
-          <p>&copy; 2024 Art Gallery. All rights reserved.</p>
+          <p>&copy; 2025 Art Gallery. All rights reserved.</p>
           <div className="footer-bottom-links">
             <a href="#">Privacy Policy</a>
             <a href="#">Terms of Service</a>
