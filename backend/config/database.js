@@ -11,7 +11,12 @@ const pool = new Pool({
   max: 20,
   idleTimeoutMillis: 30000,
   connectionTimeoutMillis: 2000,
+    connectionString: process.env.DATABASE_URL,
+  ssl: { rejectUnauthorized: false }, // if Render requires SSL
 });
+
+
+
 
 // Test database connection
 async function testConnection() {
