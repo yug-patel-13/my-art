@@ -103,7 +103,7 @@ const Home = () => {
       }
 
       // Send to backend
-      const response = await fetch('http://localhost:5000/api/custom-art/sketch', {
+      const response = await fetch('https://my-artbackend-foy5.onrender.com/api/custom-art/sketch', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -144,7 +144,7 @@ const Home = () => {
       console.log('🎨 Submitting custom painting request...');
       
       // Send to backend
-      const response = await fetch('http://localhost:5000/api/custom-art/painting', {
+      const response = await fetch('https://my-artbackend-foy5.onrender.com/api/custom-art/painting', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
