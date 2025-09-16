@@ -40,6 +40,7 @@ app.use('/api/', limiter);
 const allowedOrigins = [
   'http://localhost:3000', // Local development
   'http://localhost:3001', // Alternative local port
+  'https://sparkly-biscochitos-979e68.netlify.app',
   process.env.CORS_ORIGIN, // Production URL from environment
   process.env.FRONTEND_URL, // Alternative environment variable
 ].filter(Boolean); // Remove undefined values
