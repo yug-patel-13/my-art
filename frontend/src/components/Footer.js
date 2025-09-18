@@ -32,18 +32,18 @@ const Footer = () => {
           <ul className="footer-links">
             <li><Link to="/signin">Sign In</Link></li>
             <li><Link to="/signup">Create Account</Link></li>
-            <li><a href="#">My Orders</a></li>
-            <li><a href="#">Wishlist</a></li>
+            <li><a href="https://www.youtube.com/@Gladart7">My Orders</a></li>
+            <li><a href="https://www.youtube.com/@Gladart7">Wishlist</a></li>
           </ul>
         </div>
 
         <div className="footer-section">
           <h4>Support</h4>
           <ul className="footer-links">
-            <li><a href="#">Help Center</a></li>
-            <li><a href="#">Contact Us</a></li>
-            <li><a href="#">Shipping Info</a></li>
-            <li><a href="#">Returns</a></li>
+            <li><a href="https://www.youtube.com/@Gladart7">Help Center</a></li>
+            <li><a href="https://www.youtube.com/@Gladart7">Contact Us</a></li>
+            <li><a href="https://www.youtube.com/@Gladart7">Shipping Info</a></li>
+            <li><a href="https://www.youtube.com/@Gladart7">Returns</a></li>
           </ul>
         </div>
 
@@ -62,9 +62,9 @@ const Footer = () => {
         <div className="footer-bottom-content">
           <p>&copy; 2025 Art Gallery. All rights reserved.</p>
           <div className="footer-bottom-links">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of Service</a>
-            <a href="#">Cookie Policy</a>
+            <a href="https://www.youtube.com/@Gladart7">Privacy Policy</a>
+            <a href="https://www.youtube.com/@Gladart7">Terms of Service</a>
+            <a href="https://www.youtube.com/@Gladart7">Cookie Policy</a>
           </div>
         </div>
       </div>
