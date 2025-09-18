@@ -233,7 +233,7 @@ const SignUp = ({ onSignIn, isSignedIn }) => {
         </div>
 
         <div className="demo-info">
-          <p><strong>Real Account:</strong> Your data will be saved to the database</p>
+          <p><strong>Enter wrong information may be cause of wrong shipping. So please Enter you correct information</strong> </p>
         </div>
       </div>
     </div>

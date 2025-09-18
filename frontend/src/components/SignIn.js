@@ -147,9 +147,7 @@ const SignIn = ({ onSignIn, isSignedIn }) => {
           </p>
         </div>
 
-        <div className="demo-info">
-          <p><strong>Test Account:</strong> admin@artgallery.com / AdminPass123</p>
-        </div>
+     
       </div>
     </div>
   );

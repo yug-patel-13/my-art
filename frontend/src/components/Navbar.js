@@ -13,6 +13,7 @@ const Navbar = ({ isSignedIn, user, onSignOut, cartCount }) => {
     if (searchQuery.trim()) {
       navigate(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
       setSearchQuery('');
+      setIsMenuOpen(false);
     }
   };
 
@@ -20,17 +21,24 @@ const Navbar = ({ isSignedIn, user, onSignOut, cartCount }) => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <nav className="navbar">
       <div className="navbar-container">
-        <Link to="/" className="navbar-logo">
-          <span className="logo-text">Art Gallery</span>
+        <Link to="/" className="navbar-logo" onClick={closeMenu}>
+          <span className="logo-text">
+    <img src="my_logo.jpg" alt="logo" id='logo' /> 
+          </span>
+    
         </Link>
 
         <div className={`navbar-menu ${isMenuOpen ? 'active' : ''}`}>
-          <Link to="/" className="nav-link">Home</Link>
-          <Link to="/paintings" className="nav-link">Paintings</Link>
-          <Link to="/sketches" className="nav-link">Sketches</Link>
+          <Link to="/" className="nav-link" onClick={closeMenu}>Home</Link>
+          <Link to="/paintings" className="nav-link" onClick={closeMenu}>Paintings</Link>
+          <Link to="/sketches" className="nav-link" onClick={closeMenu}>Sketches</Link>
           
           <form className="search-form" onSubmit={handleSearch}>
             <input
@@ -56,17 +64,17 @@ const Navbar = ({ isSignedIn, user, onSignOut, cartCount }) => {
                       : 'User'
                   }!
                 </span>
-                <Link to="/cart" className="nav-link cart-link">
+                <Link to="/cart" className="nav-link cart-link" onClick={closeMenu}>
                   Cart ({cartCount})
                 </Link>
-                <button onClick={onSignOut} className="signout-btn">
+                <button onClick={() => { onSignOut(); closeMenu(); }} className="signout-btn">
                   Sign Out
                 </button>
               </>
             ) : (
               <>
-                <Link to="/signin" className="nav-link">Sign In</Link>
-                <Link to="/signup" className="nav-link signup-link">Sign Up</Link>
+                <Link to="/signin" className="nav-link" onClick={closeMenu}>Sign In</Link>
+                <Link to="/signup" className="nav-link signup-link" onClick={closeMenu}>Sign Up</Link>
               </>
             )}
           </div>
@@ -79,9 +87,7 @@ const Navbar = ({ isSignedIn, user, onSignOut, cartCount }) => {
         </div>
       </div>
     </nav>
-    
   );
-
 };
 
 export default Navbar;

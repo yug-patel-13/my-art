@@ -553,29 +553,7 @@
   }
 }
 
-.modal-close {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background: #ff4757;
-  color: white;
-  border: none;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  font-size: 20px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-  z-index: 10;
-}
 
-.modal-close:hover {
-  background: #ff3742;
-  transform: scale(1.1);
-}
 
 .modal-body {
   padding: 40px;
@@ -715,7 +693,7 @@
 }
 
 .btn-secondary {
-  background: #6c757d;
+  background: #84a649;
   color: white;
   padding: 12px 25px;
   border: none;

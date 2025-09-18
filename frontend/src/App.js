@@ -11,6 +11,10 @@ import SignUp from './components/SignUp';
 import Search from './components/Search';
 import Checkout from './components/Checkout';
 import Footer from './components/Footer';
+import PrivacyPolicy from './components/PrivacyPolicy';
+import TermsOfService from './components/TermsOfService';
+import CookiePolicy from './components/CookiePolicy';
+import ScrollToTop from './components/ScrollToTop';
 
 function AppWrapper() {
   // AppWrapper is needed to use useNavigate
@@ -127,6 +131,7 @@ function App({ navigate }) {
   return (
     <div className="App">
       <Navbar isSignedIn={isSignedIn} user={user} onSignOut={handleSignOut} cartCount={cart.length} />
+      <ScrollToTop />
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -137,6 +142,9 @@ function App({ navigate }) {
           <Route path="/signup" element={<SignUp onSignIn={handleSignIn} isSignedIn={isSignedIn} />} />
           <Route path="/search" element={<Search addToCart={addToCart} buyNow={buyNow} isSignedIn={isSignedIn} />} />
           <Route path="/checkout" element={<Checkout isSignedIn={isSignedIn} user={user} />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+<Route path="/terms-of-service" element={<TermsOfService />} />
+<Route path="/cookie-policy" element={<CookiePolicy />} />
         </Routes>
       </main>
       <Footer />

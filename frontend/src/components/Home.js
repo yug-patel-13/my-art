@@ -200,6 +200,7 @@ const Home = () => {
     <div className="home">
       <section className="hero">
         <div className="hero-content">
+          <h1 className="hero-title">Welcome to Artify</h1>
           <h1 className="hero-title">Discover Beautiful Artworks</h1>
           <p className="hero-subtitle">
             Explore our curated collection of stunning paintings and sketches from talented artists
@@ -236,12 +237,13 @@ const Home = () => {
       {showSketchForm && (
         <div className="modal-overlay" onClick={() => setShowSketchForm(false)}>
           <div className="modal-content custom-sketch-modal" onClick={(e) => e.stopPropagation()}>
-            <button className="modal-close" onClick={() => setShowSketchForm(false)}>×</button>
+     
             <div className="modal-body">
-              <h2>Create Your Custom Sketch</h2>
-              <p className="form-description">Tell us about your vision and we'll create a unique sketch just for you!</p>
+             
+             
               
               <form onSubmit={handleSketchSubmit} className="custom-sketch-form">
+                 <h2>Create Your Custom Sketch</h2>
                 <div className="form-group">
                   <label htmlFor="name">Full Name *</label>
                   <input
@@ -357,12 +359,13 @@ const Home = () => {
       {showPaintingForm && (
         <div className="modal-overlay" onClick={() => setShowPaintingForm(false)}>
           <div className="modal-content custom-painting-modal" onClick={(e) => e.stopPropagation()}>
-            <button className="modal-close" onClick={() => setShowPaintingForm(false)}>×</button>
+           
             <div className="modal-body">
-              <h2>Create Your Custom Painting</h2>
-              <p className="form-description">Share your vision with us and we'll create a masterpiece just for you!</p>
+              
+       
               
               <form onSubmit={handlePaintingSubmit} className="custom-painting-form">
+                <h2>Create Your Custom Painting</h2>
                 <div className="form-group">
                   <label htmlFor="painting-name">Full Name *</label>
                   <input
