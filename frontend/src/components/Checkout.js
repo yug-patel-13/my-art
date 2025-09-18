@@ -564,161 +564,76 @@ const Checkout = ({ isSignedIn, user }) => {
             )}
 
             {/* Step 3: Payment Method */}
-            {currentStep === 3 && (
-              <div className="checkout-step">
-                <h2>Payment Method</h2>
-                                 <div className="payment-options">
-                   <div className="payment-option">
-                     <input
-                       type="radio"
-                       id="creditCard"
-                       name="paymentMethod"
-                       value="creditCard"
-                       checked={paymentMethod === 'creditCard'}
-                       onChange={(e) => setPaymentMethod(e.target.value)}
-                     />
-                     <label htmlFor="creditCard">Credit Card</label>
-                   </div>
-                   <div className="payment-option">
-                     <input
-                       type="radio"
-                       id="debitCard"
-                       name="paymentMethod"
-                       value="debitCard"
-                       checked={paymentMethod === 'debitCard'}
-                       onChange={(e) => setPaymentMethod(e.target.value)}
-                     />
-                     <label htmlFor="debitCard">Debit Card</label>
-                   </div>
-                   <div className="payment-option">
-                     <input
-                       type="radio"
-                       id="paypal"
-                       name="paymentMethod"
-                       value="paypal"
-                       checked={paymentMethod === 'paypal'}
-                       onChange={(e) => setPaymentMethod(e.target.value)}
-                     />
-                     <label htmlFor="paypal">PayPal</label>
-                   </div>
-                   <div className="payment-option">
-                     <input
-                       type="radio"
-                       id="cashOnDelivery"
-                       name="paymentMethod"
-                       value="cashOnDelivery"
-                       checked={paymentMethod === 'cashOnDelivery'}
-                       onChange={(e) => setPaymentMethod(e.target.value)}
-                     />
-                     <label htmlFor="cashOnDelivery">Cash on Delivery</label>
-                   </div>
-                 </div>
+          {currentStep === 3 && (
+  <div className="checkout-step">
+    <h2>Payment Method</h2>
+    <div className="payment-options">
+      <div className="payment-option">
+        <input
+          type="radio"
+          id="cashOnDelivery"
+          name="paymentMethod"
+          value="cashOnDelivery"
+          checked={paymentMethod === 'cashOnDelivery'}
+          onChange={(e) => setPaymentMethod(e.target.value)}
+        />
+        <label htmlFor="cashOnDelivery">Cash on Delivery</label>
+      </div>
 
-                {(paymentMethod === 'creditCard' || paymentMethod === 'debitCard') && (
-                  <div className="card-details">
-                    <div className="form-group full-width">
-                      <label>Card Number *</label>
-                      <input
-                        type="text"
-                        value={paymentDetails.cardNumber}
-                        onChange={(e) => handlePaymentChange('cardNumber', e.target.value)}
-                        placeholder="1234 5678 9012 3456"
-                        maxLength="19"
-                        required
-                      />
-                    </div>
-                    <div className="form-group full-width">
-                      <label>Cardholder Name *</label>
-                      <input
-                        type="text"
-                        value={paymentDetails.cardholderName}
-                        onChange={(e) => handlePaymentChange('cardholderName', e.target.value)}
-                        placeholder="Name on card"
-                        required
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label>Expiry Month *</label>
-                      <select
-                        value={paymentDetails.expiryMonth}
-                        onChange={(e) => handlePaymentChange('expiryMonth', e.target.value)}
-                        required
-                      >
-                        <option value="">Month</option>
-                        {Array.from({ length: 12 }, (_, i) => (
-                          <option key={i + 1} value={String(i + 1).padStart(2, '0')}>
-                            {String(i + 1).padStart(2, '0')}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                    <div className="form-group">
-                      <label>Expiry Year *</label>
-                      <select
-                        value={paymentDetails.expiryYear}
-                        onChange={(e) => handlePaymentChange('expiryYear', e.target.value)}
-                        required
-                      >
-                        <option value="">Year</option>
-                        {Array.from({ length: 10 }, (_, i) => {
-                          const year = new Date().getFullYear() + i;
-                          return (
-                            <option key={year} value={year}>
-                              {year}
-                            </option>
-                          );
-                        })}
-                      </select>
-                    </div>
-                    <div className="form-group">
-                      <label>CVV *</label>
-                      <input
-                        type="text"
-                        value={paymentDetails.cvv}
-                        onChange={(e) => handlePaymentChange('cvv', e.target.value)}
-                        placeholder="123"
-                        maxLength="4"
-                        required
-                      />
-                    </div>
-                    <div className="form-group full-width">
-                      <label>
-                        <input
-                          type="checkbox"
-                          checked={paymentDetails.saveCard}
-                          onChange={(e) => handlePaymentChange('saveCard', e.target.checked)}
-                        />
-                        Save this card for future purchases
-                      </label>
-                    </div>
-                  </div>
-                )}
+      <div className="payment-option">
+        <input
+          type="radio"
+          id="creditCard"
+          name="paymentMethod"
+          value="creditCard"
+          checked={paymentMethod === 'creditCard'}
+          disabled
+        />
+        <label htmlFor="creditCard" style={{ opacity: 0.5 }}>Credit Card (Disabled)</label>
+      </div>
 
-                                 {paymentMethod === 'paypal' && (
-                   <div className="paypal-info">
-                     <p>You will be redirected to PayPal to complete your payment.</p>
-                     <div className="paypal-logo">
-                       <span>PayPal</span>
-                     </div>
-                   </div>
-                 )}
-                 
-                 {paymentMethod === 'cashOnDelivery' && (
-                   <div className="cod-info">
-                     <div className="cod-logo">
-                       <span>💵</span>
-                     </div>
-                     <h3>Cash on Delivery</h3>
-                     <p>Pay with cash when your order is delivered.</p>
-                     <div className="cod-details">
-                       <p><strong>Delivery Fee:</strong> ₹415</p>
-                       <p><strong>Payment:</strong> Cash only</p>
-                       <p><strong>Note:</strong> Please have exact change ready</p>
-                     </div>
-                   </div>
-                 )}
-              </div>
-            )}
+      <div className="payment-option">
+        <input
+          type="radio"
+          id="debitCard"
+          name="paymentMethod"
+          value="debitCard"
+          checked={paymentMethod === 'debitCard'}
+          disabled
+        />
+        <label htmlFor="debitCard" style={{ opacity: 0.5 }}>Debit Card (Disabled)</label>
+      </div>
+
+      <div className="payment-option">
+        <input
+          type="radio"
+          id="paypal"
+          name="paymentMethod"
+          value="paypal"
+          checked={paymentMethod === 'paypal'}
+          disabled
+        />
+        <label htmlFor="paypal" style={{ opacity: 0.5 }}>PayPal (Disabled)</label>
+      </div>
+    </div>
+
+    {/* Show only COD details */}
+    {paymentMethod === 'cashOnDelivery' && (
+      <div className="cod-info">
+        <div className="cod-logo">
+          <span>💵</span>
+        </div>
+        <h3>Cash on Delivery</h3>
+        <p>Pay with cash when your order is delivered.</p>
+        <div className="cod-details">
+          <p><strong>Delivery Fee:</strong> ₹415</p>
+          <p><strong>Payment:</strong> Cash only</p>
+          <p><strong>Note:</strong> Please have exact change ready</p>
+        </div>
+      </div>
+    )}
+  </div>
+)}
 
             {/* Step 4: Review Order */}
             {currentStep === 4 && (
@@ -852,3 +767,5 @@ const Checkout = ({ isSignedIn, user }) => {
 };
 
 export default Checkout;
+
+
