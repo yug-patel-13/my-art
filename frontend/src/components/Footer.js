@@ -10,10 +10,10 @@ const Footer = () => {
           <h3>Art Gallery</h3>
           <p>Discover and collect beautiful artworks from talented artists around the world. Your premier destination for original paintings and sketches.</p>
           <div className="social-links">
-            <a href="#" className="social-link">Facebook</a>
-            <a href="#" className="social-link">Instagram</a>
-            <a href="#" className="social-link">Twitter</a>
-            <a href="#" className="social-link">Pinterest</a>
+          
+            <a href="https://www.instagram.com/about_art_13/" className="social-link">Instagram</a>
+         
+           
           </div>
         </div>
 
