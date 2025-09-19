@@ -169,7 +169,8 @@ const Checkout = ({ isSignedIn, user }) => {
         case 4:
           if(shippingAddress.zipCode!==6){
             alert("Zip Code must be in 6 digit")
-            return false
+           
+            break;
           }
         return true;
       default:
