@@ -3,6 +3,16 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import './Checkout.css';
 
 const Checkout = ({ isSignedIn, user }) => {
+
+  const gujaratDistricts = [
+  "Ahmedabad", "Amreli", "Anand", "Aravalli", "Banaskantha", "Bharuch", 
+  "Bhavnagar", "Botad", "Chhota Udaipur", "Dahod", "Dang", "Devbhoomi Dwarka",
+  "Gandhinagar", "Gir Somnath", "Jamnagar", "Junagadh", "Kheda", "Kutch",
+  "Mahisagar", "Mehsana", "Morbi", "Narmada", "Navsari", "Panchmahal",
+  "Patan", "Porbandar", "Rajkot", "Sabarkantha", "Surat", "Surendranagar",
+  "Tapi", "Vadodara", "Valsad"
+];
+
   const navigate = useNavigate();
   const location = useLocation();
   
@@ -434,22 +444,28 @@ const Checkout = ({ isSignedIn, user }) => {
                       required
                     />
                   </div>
-                  <div className="form-group">
-                    <label>City *</label>
-                    <input
-                      type="text"
-                      value={shippingAddress.city}
-                      onChange={(e) => handleAddressChange('city', e.target.value)}
-                      required
-                    />
-                  </div>
+                 <div className="form-group">
+  <label>City (District of Gujarat) *</label>
+  <select
+    value={shippingAddress.city}
+    onChange={(e) => handleAddressChange('city', e.target.value)}
+    required
+  >
+    <option value="">Select District</option>
+    {gujaratDistricts.map((district, index) => (
+      <option key={index} value={district}>{district}</option>
+    ))}
+  </select>
+</div>
+
                   <div className="form-group">
                     <label>State *</label>
                     <input
                       type="text"
-                      value={shippingAddress.state}
-                      onChange={(e) => handleAddressChange('state', e.target.value)}
+                      value="Gujrat"
+                    
                       required
+                      disabled
                     />
                   </div>
                   <div className="form-group">
@@ -519,21 +535,26 @@ const Checkout = ({ isSignedIn, user }) => {
                         required
                       />
                     </div>
-                    <div className="form-group">
-                      <label>City *</label>
-                      <input
-                        type="text"
-                        value={billingAddress.city}
-                        onChange={(e) => handleAddressChange('city', e.target.value, 'billing')}
-                        required
-                      />
-                    </div>
+        <div className="form-group">
+  <label>City (District of Gujarat) *</label>
+  <select
+    value={billingAddress.city}
+    onChange={(e) => handleAddressChange('city', e.target.value, 'billing')}
+    required
+  >
+    <option value="">Select District</option>
+    {gujaratDistricts.map((district, index) => (
+      <option key={index} value={district}>{district}</option>
+    ))}
+  </select>
+</div>
+
                     <div className="form-group">
                       <label>State *</label>
                       <input
                         type="text"
-                        value={billingAddress.state}
-                        onChange={(e) => handleAddressChange('state', e.target.value, 'billing')}
+                        value="Gujrat"
+                       disabled
                         required
                       />
                     </div>
