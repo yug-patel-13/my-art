@@ -73,9 +73,9 @@ const Checkout = ({ isSignedIn, user }) => {
     phone: '',
     address: '',
     city: '',
-    state: 'Gujrat',
+    state: 'Gujarat',
     zipCode: '',
-    country: 'United States'
+    country: 'India'
   });
 
   const [billingAddress, setBillingAddress] = useState({
@@ -86,7 +86,7 @@ const Checkout = ({ isSignedIn, user }) => {
     city: '',
     state: '',
     zipCode: '',
-    country: 'United States'
+    country: 'India'
   });
 
   const [paymentMethod, setPaymentMethod] = useState('creditCard');
@@ -118,7 +118,7 @@ const Checkout = ({ isSignedIn, user }) => {
   const calculateShipping = () => {
     // Add delivery fee for Cash on Delivery
     if (paymentMethod === 'cashOnDelivery') {
-      return 5.00;
+      return 19.00;
     }
     return 0; // Free shipping for other payment methods
   };
@@ -150,6 +150,8 @@ const Checkout = ({ isSignedIn, user }) => {
 
  const validateStep = (step) => {
   const isValidZip = (zip) => /^\d{6}$/.test(zip); // checks exactly 6 digits
+  const isValidPhone = (phone) => /^[6-9]\d{9}$/.test(phone);
+
 
   switch (step) {
     case 1:
@@ -161,7 +163,8 @@ const Checkout = ({ isSignedIn, user }) => {
         shippingAddress.address &&
         shippingAddress.city &&
         shippingAddress.state &&
-        isValidZip(shippingAddress.zipCode)
+        isValidZip(shippingAddress.zipCode)&&
+        isValidPhone(shippingAddress.phone)
       );
     case 2:
       if (billingAddress.sameAsShipping) return true;
@@ -171,7 +174,8 @@ const Checkout = ({ isSignedIn, user }) => {
         billingAddress.address &&
         billingAddress.city &&                                                      
         billingAddress.state &&                                                      
-        isValidZip(billingAddress.zipCode)                                                      
+        isValidZip(billingAddress.zipCode)&&
+        isValidPhone(shippingAddress.phone)                                                 
       );                                                      
     case 3:                                                      
       if (paymentMethod === "creditCard") {                                                      
@@ -479,7 +483,7 @@ const Checkout = ({ isSignedIn, user }) => {
                     <label>State *</label>
                     <input
                       type="text"
-                      value="Gujrat"
+                      value="Gujarat"
                     
                       required
                       disabled
@@ -570,7 +574,7 @@ const Checkout = ({ isSignedIn, user }) => {
                       <label>State *</label>
                       <input
                         type="text"
-                        value="Gujrat"
+                        value="Gujarat"
                        disabled
                         required
                       />
@@ -662,7 +666,7 @@ const Checkout = ({ isSignedIn, user }) => {
         <h3>Cash on Delivery</h3>
         <p>Pay with cash when your order is delivered.</p>
         <div className="cod-details">
-          <p><strong>Delivery Fee:</strong> ₹415</p>
+          <p><strong>Delivery Fee:</strong> ₹19</p>
           <p><strong>Payment:</strong> Cash only</p>
           <p><strong>Note:</strong> Please have exact change ready</p>
         </div>
@@ -783,7 +787,7 @@ const Checkout = ({ isSignedIn, user }) => {
                  </div>
                  <div className="summary-row">
                    <span>Shipping:</span>
-                   <span>{paymentMethod === 'cashOnDelivery' ? '₹415' : 'Free'}</span>
+                   <span>{paymentMethod === 'cashOnDelivery' ? '₹19' : 'Free'}</span>
                  </div>
                  <div className="summary-row"> 
                    <span>Tax:</span>

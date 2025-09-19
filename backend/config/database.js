@@ -106,6 +106,7 @@ async function initializeDatabase() {
         id SERIAL PRIMARY KEY,
         order_id INTEGER REFERENCES orders(id) ON DELETE CASCADE,
         artwork_id INTEGER REFERENCES artworks(id) ON DELETE CASCADE,
+         title VARCHAR(255) NOT NULL,
         quantity INTEGER NOT NULL,
         price DECIMAL(10,2) NOT NULL,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP

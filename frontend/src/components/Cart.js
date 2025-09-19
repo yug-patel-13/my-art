@@ -62,7 +62,7 @@ const Cart = ({ cart, removeFromCart, isSignedIn, navigateToCheckout }) => {
                 <p className="item-type">{item.type === 'painting' ? 'Painting' : 'Sketch'}</p>
                 <p className="item-medium">{item.medium}</p>
                 <p className="item-size">{item.size}</p>
-                <div className="item-price">${item.price.toLocaleString()}</div>
+                <div className="item-price">₹{item.price.toLocaleString()}</div>
               </div>
               <div className="item-actions">
                 <button 
@@ -80,7 +80,7 @@ const Cart = ({ cart, removeFromCart, isSignedIn, navigateToCheckout }) => {
           <h3>Order Summary</h3>
           <div className="summary-row">
             <span>Subtotal:</span>
-            <span>${calculateTotal().toLocaleString()}</span>
+            <span>₹{calculateTotal().toLocaleString()}</span>
           </div>
           <div className="summary-row">
             <span>Shipping:</span>
@@ -88,7 +88,7 @@ const Cart = ({ cart, removeFromCart, isSignedIn, navigateToCheckout }) => {
           </div>
           <div className="summary-row total">
             <span>Total:</span>
-            <span>${calculateTotal().toLocaleString()}</span>
+            <span>₹{calculateTotal().toLocaleString()}</span>
           </div>
           
           <button 

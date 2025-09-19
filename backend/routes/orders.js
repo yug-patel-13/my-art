@@ -111,10 +111,11 @@ router.post('/', [
     // Create order items
     for (const item of processedOrderItems) {
       // Insert order item
-      await client.query(`
-        INSERT INTO order_items (order_id, artwork_id, quantity, price)
-        VALUES ($1, $2, $3, $4)
-      `, [order.id, item.artworkId, item.quantity, item.price]);
+     await client.query(`
+  INSERT INTO order_items (order_id, artwork_id, quantity, price, title)
+  VALUES ($1, $2, $3, $4, $5)
+`, [order.id, item.artworkId, item.quantity, item.price, item.title]);
+
 
       // Update stock (skip for guest checkout for now)
       if (userId) {
@@ -235,17 +236,18 @@ router.get('/:id', authenticateToken, async (req, res) => {
 
     // Get order items
     const itemsResult = await pool.query(`
-      SELECT 
-        oi.quantity,
-        oi.price,
-        a.id as artwork_id,
-        a.title,
-        a.artist,
-        a.type,
-        a.image_url
-      FROM order_items oi
-      JOIN artworks a ON oi.artwork_id = a.id
-      WHERE oi.order_id = $1
+SELECT 
+  oi.quantity,
+  oi.price,
+  oi.title,   
+  a.id as artwork_id,
+  a.artist,
+  a.type,
+  a.image_url
+FROM order_items oi
+JOIN artworks a ON oi.artwork_id = a.id
+WHERE oi.order_id = $1
+
     `, [id]);
 
     res.json({
