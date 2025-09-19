@@ -166,7 +166,7 @@ const Checkout = ({ isSignedIn, user }) => {
                  paymentDetails.expiryMonth && paymentDetails.expiryYear && 
                  paymentDetails.cvv;
         }
-        case 3:
+        case 4:
           if(shippingAddress.zipCode!==6){
             alert("Zip Code must be in 6 digit")
             return false
