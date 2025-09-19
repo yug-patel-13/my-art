@@ -228,13 +228,15 @@ const Checkout = ({ isSignedIn, user }) => {
           country: shippingAddress.country
         },
         paymentMethod: paymentMethod === 'cashOnDelivery' ? 'cod' : paymentMethod, // Convert to backend format
-        items: orderSummary.map(item => ({
-          artworkId: item.id,
-          title: item.title,
-          artist: item.artist,
-          price: item.price,
-          quantity: item.quantity || 1
-        }))
+        
+       items: orderSummary.map(item => ({
+  artworkId: item.id,
+  title: item.title || "Untitled Artwork",
+  artist: item.artist || "Unknown Artist",
+  price: item.price,
+  quantity: item.quantity || 1
+}))
+
       };
 
       // Send order to backend
