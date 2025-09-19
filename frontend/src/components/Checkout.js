@@ -148,35 +148,46 @@ const Checkout = ({ isSignedIn, user }) => {
 
 
 
-  const validateStep = (step) => {
-    switch (step) {
-      case 1:
-        return shippingAddress.firstName && shippingAddress.lastName && 
-               shippingAddress.email && shippingAddress.phone && 
-               shippingAddress.address && shippingAddress.city && 
-               shippingAddress.state && shippingAddress.zipCode;
-      case 2:
-        if (billingAddress.sameAsShipping) return true;
-        return billingAddress.firstName && billingAddress.lastName && 
-               billingAddress.address && billingAddress.city && 
-               billingAddress.state && billingAddress.zipCode;
-      case 3:
-        if (paymentMethod === 'creditCard') {
-          return paymentDetails.cardNumber && paymentDetails.cardholderName && 
-                 paymentDetails.expiryMonth && paymentDetails.expiryYear && 
-                 paymentDetails.cvv;
-        }
-        case 4:
-          if(shippingAddress.zipCode!==6){
-            alert("Zip Code must be in 6 digit")
-           
-            break;
-          }
-        return true;
-      default:
-        return true;
-    }
-  };
+ const validateStep = (step) => {
+  const isValidZip = (zip) => /^\d{6}$/.test(zip); // checks exactly 6 digits
+
+  switch (step) {
+    case 1:
+      return (
+        shippingAddress.firstName &&
+        shippingAddress.lastName &&
+        shippingAddress.email &&
+        shippingAddress.phone &&
+        shippingAddress.address &&
+        shippingAddress.city &&
+        shippingAddress.state &&
+        isValidZip(shippingAddress.zipCode)
+      );
+    case 2:
+      if (billingAddress.sameAsShipping) return true;
+      return (
+        billingAddress.firstName &&
+        billingAddress.lastName &&
+        billingAddress.address &&
+        billingAddress.city &&
+        billingAddress.state &&
+        isValidZip(billingAddress.zipCode)
+      );
+    case 3:
+      if (paymentMethod === "creditCard") {
+        return (
+          paymentDetails.cardNumber &&
+          paymentDetails.cardholderName &&
+          paymentDetails.expiryMonth &&
+          paymentDetails.expiryYear &&
+          paymentDetails.cvv
+        );
+      }
+      return true;
+    default:
+      return true;
+  }
+};
 
   const nextStep = () => {
     if (validateStep(currentStep)) {
