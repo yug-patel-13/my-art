@@ -72,8 +72,7 @@ app.use(compression());
 // Logging middleware
 app.use(morgan('combined'));
 
-// Static file serving for uploads
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
