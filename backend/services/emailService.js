@@ -7,8 +7,8 @@ class EmailService {
     this.transporter = nodemailer.createTransport({
       service: 'gmail', // You can change this to your preferred email service
       auth: {
-        user: process.env.EMAIL_USER || 'your-email@gmail.com',
-        pass: process.env.EMAIL_PASS || 'your-app-password' // Use App Password for Gmail
+        user: process.env.EMAIL_USER ,
+        pass: process.env.EMAIL_PASS
       }
     });
   }
@@ -20,7 +20,7 @@ class EmailService {
       
       const mailOptions = {
         from: process.env.EMAIL_USER || 'your-email@gmail.com',
-        to: process.env.ADMIN_EMAIL || 'admin@artgallery.com', // Your email to receive orders
+        to: process.env.EMAIL_USER || 'admin@artgallery.com', 
         cc: email, // CC the customer
         subject: `🎨 New Custom Sketch Order - ${name}`,
         html: `
@@ -80,7 +80,7 @@ class EmailService {
       
       const mailOptions = {
         from: process.env.EMAIL_USER || 'your-email@gmail.com',
-        to: process.env.ADMIN_EMAIL || 'admin@artgallery.com',
+        to: process.env.EMAIL_USER || 'admin@artgallery.com',
         cc: email,
         subject: `🎨 New Custom Painting Request - ${name}`,
         html: `
