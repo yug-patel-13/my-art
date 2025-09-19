@@ -567,7 +567,55 @@ const Checkout = ({ isSignedIn, user }) => {
           {currentStep === 3 && (
   <div className="checkout-step">
     <h2>Payment Method</h2>
-   
+    <div className="payment-options">
+      <div className="payment-option">
+        <input
+          type="radio"
+          id="cashOnDelivery"
+          name="paymentMethod"
+          value="cashOnDelivery"
+          checked={paymentMethod === 'cashOnDelivery'}
+          onChange={(e) => setPaymentMethod(e.target.value)}
+        />
+        <label htmlFor="cashOnDelivery">Cash on Delivery</label>
+      </div>
+
+      <div className="payment-option">
+        <input
+          type="radio"
+          id="creditCard"
+          name="paymentMethod"
+          value="creditCard"
+          checked={paymentMethod === 'creditCard'}
+          disabled
+        />
+        <label htmlFor="creditCard" style={{ opacity: 0.5 }}>Credit Card (Disabled)</label>
+      </div>
+
+      <div className="payment-option">
+        <input
+          type="radio"
+          id="debitCard"
+          name="paymentMethod"
+          value="debitCard"
+          checked={paymentMethod === 'debitCard'}
+          disabled
+        />
+        <label htmlFor="debitCard" style={{ opacity: 0.5 }}>Debit Card (Disabled)</label>
+      </div>
+
+      <div className="payment-option">
+        <input
+          type="radio"
+          id="paypal"
+          name="paymentMethod"
+          value="paypal"
+          checked={paymentMethod === 'paypal'}
+          disabled
+        />
+        <label htmlFor="paypal" style={{ opacity: 0.5 }}>PayPal (Disabled)</label>
+      </div>
+    </div>
 
     {/* Show only COD details */}
     {paymentMethod === 'cashOnDelivery' && (
