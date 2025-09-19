@@ -73,7 +73,7 @@ const Checkout = ({ isSignedIn, user }) => {
     phone: '',
     address: '',
     city: '',
-    state: '',
+    state: 'Gujrat',
     zipCode: '',
     country: 'United States'
   });
@@ -160,7 +160,7 @@ const Checkout = ({ isSignedIn, user }) => {
         shippingAddress.phone &&
         shippingAddress.address &&
         shippingAddress.city &&
-        
+        shippingAddress.state &&
         isValidZip(shippingAddress.zipCode)
       );
     case 2:
@@ -169,23 +169,23 @@ const Checkout = ({ isSignedIn, user }) => {
         billingAddress.firstName &&
         billingAddress.lastName &&
         billingAddress.address &&
-        billingAddress.city &&
-    
-        isValidZip(billingAddress.zipCode)
-      );
-    case 3:
-      if (paymentMethod === "creditCard") {
-        return (
-          paymentDetails.cardNumber &&
-          paymentDetails.cardholderName &&
-          paymentDetails.expiryMonth &&
-          paymentDetails.expiryYear &&
-          paymentDetails.cvv
-        );
-      }
-      return true;
-    default:
-      return true;
+        billingAddress.city &&                                                      
+        billingAddress.state &&                                                      
+        isValidZip(billingAddress.zipCode)                                                      
+      );                                                      
+    case 3:                                                      
+      if (paymentMethod === "creditCard") {                                                      
+        return (                                                      
+          paymentDetails.cardNumber &&                                                      
+          paymentDetails.cardholderName &&                                                      
+          paymentDetails.expiryMonth &&                                                      
+          paymentDetails.expiryYear &&                                                      
+          paymentDetails.cvv                                                      
+        );                                                      
+      }                                                      
+      return true;                                                      
+    default:                                                      
+      return true;                                                      
   }
 };
 
