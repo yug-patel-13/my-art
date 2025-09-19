@@ -35,15 +35,7 @@ const Home = () => {
     }));
   };
 
-  const handlePhotoUpload = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      setSketchFormData(prev => ({
-        ...prev,
-        photo: file
-      }));
-    }
-  };
+
 
   const calculateSketchPrice = () => {
     let basePrice = 0;
@@ -119,7 +111,7 @@ const Home = () => {
 
       console.log('✅ Custom sketch order submitted successfully:', result);
       
-      alert(`Custom Sketch Order Submitted!\n\nName: ${sketchFormData.name}\nEmail: ${sketchFormData.email}\nSize: ${sketchFormData.size}\nPeople: ${sketchFormData.peopleCount}\nPhoto: ${sketchFormData.photo ? sketchFormData.photo.name : 'No photo uploaded'}\n\nTotal Price: ₹${price.toLocaleString()}\n\nWe'll contact you soon with further details!`);
+      alert(`Custom Sketch Order Submitted!\n\nName: ${sketchFormData.name}\nEmail: ${sketchFormData.email}\nSize: ${sketchFormData.size}\nPeople: ${sketchFormData.peopleCount}\nTotal Price: ₹${price.toLocaleString()}\n\nWe'll contact you soon with further details!`);
       
       // Reset form
       setSketchFormData({
@@ -305,18 +297,7 @@ const Home = () => {
                   <small className="size-recommendation">{getSizeRecommendation()}</small>
                 </div>
 
-                <div className="form-group">
-                  <label htmlFor="photo">Upload Reference Photo</label>
-                  <input
-                    type="file"
-                    id="photo"
-                    name="photo"
-                    onChange={handlePhotoUpload}
-                    accept="image/*"
-                    placeholder="Upload a photo for reference"
-                  />
-                  <small>Upload a photo to help us understand your vision (optional)</small>
-                </div>
+       
 
                 <div className="price-preview">
                   <h3>Price Preview</h3>
