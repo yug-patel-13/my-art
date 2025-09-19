@@ -80,7 +80,7 @@ const Checkout = ({ isSignedIn, user }) => {
   });
 
   const [paymentMethod, setPaymentMethod] = useState('creditCard');
-  const [paymentDetails, setPaymentDetails] = useState({
+  const [paymentDetails] = useState({
     cardNumber: '',
     cardholderName: '',
     expiryMonth: '',
@@ -136,9 +136,7 @@ const Checkout = ({ isSignedIn, user }) => {
     setBillingAddress(prev => ({ ...prev, sameAsShipping: !prev.sameAsShipping }));
   };
 
-  const handlePaymentChange = (field, value) => {
-    setPaymentDetails(prev => ({ ...prev, [field]: value }));
-  };
+
 
   const validateStep = (step) => {
     switch (step) {
